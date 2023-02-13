@@ -1,5 +1,5 @@
 export interface ICourseCard {
-    title: string,
-    score: string,
-    type: string
+  title: string;
+  score: string;
+  type: string;
 }

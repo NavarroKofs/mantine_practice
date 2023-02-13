@@ -4,30 +4,30 @@ export const headerOptions = [
     text: "Try Lesson",
     variant: "subtle",
     color: "dark",
-    radius: "xs"
+    radius: "xs",
   },
   {
     id: 2,
     text: "Print",
     variant: "outline",
-    radius: "xs"
+    radius: "xs",
   },
   {
     id: 3,
     text: "Cancel",
     variant: "outline",
-    radius: "xs"
+    radius: "xs",
   },
   {
     id: 4,
     text: "Save and draft",
     variant: "filled",
-    radius: "xs"
+    radius: "xs",
   },
   {
     id: 5,
     text: "Publish",
     variant: "filled",
-    radius: "xs"
+    radius: "xs",
   },
 ];

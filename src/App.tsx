@@ -1,4 +1,5 @@
-import { AppShell, MantineProvider } from '@mantine/core';
+import React from 'react'
+import { AppShell, MantineProvider } from "@mantine/core";
 import { HeaderMenu } from "./components/Header";
 
 function App() {
@@ -10,7 +11,12 @@ function App() {
         asideOffsetBreakpoint="sm"
         header={<HeaderMenu />}
         styles={(theme) => ({
-          main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
+          main: {
+            backgroundColor:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[8]
+                : theme.colors.gray[0],
+          },
         })}
       >
         {/* Your application here */}
