@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Burger, createStyles, Header, MediaQuery } from "@mantine/core";
 import { useState } from "react";
 import { headerOptions } from "../headerOptions";
