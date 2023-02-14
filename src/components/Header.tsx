@@ -6,7 +6,7 @@ import CourseCard from "./CourseCard";
 import { IButtonTypes } from "./IButtonTypes";
 import MenuOptions from "./MenuOptions";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   inner: {
     height: "100%",
     display: "flex",
