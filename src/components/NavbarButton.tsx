@@ -1,5 +1,6 @@
 import { createStyles, Navbar, UnstyledButton } from "@mantine/core";
 import React from "react";
+import { useNavigate } from "react-router";
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -39,13 +40,19 @@ const useStyles = createStyles((theme) => ({
 
 type Props = {
   children: string | JSX.Element | JSX.Element[];
+  url?: string;
 };
 
-const NavbarButton = ({ children }: Props) => {
+const NavbarButton = ({ children, url = "" }: Props) => {
   const { classes } = useStyles();
+  const navigate = useNavigate();
   return (
     <Navbar.Section className={classes.section}>
       <UnstyledButton
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(url);
+        }}
         className={classes.link}
         style={{
           display: "flex",
