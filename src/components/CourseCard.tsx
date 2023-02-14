@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Flex, Text } from "@mantine/core";
 import { ICourseCard } from "./ICourseCard";
 

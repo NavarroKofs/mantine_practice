@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Flex } from "@mantine/core";
 import { IButtonTypes } from "./IButtonTypes";
 import MenuOption from "./MenuOption";

@@ -1,6 +1,7 @@
-import React from 'react'
+import React from "react";
 import { AppShell, MantineProvider } from "@mantine/core";
 import { HeaderMenu } from "./components/Header";
+import NavbarMain from "./components/Navbar";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         navbarOffsetBreakpoint="sm"
         asideOffsetBreakpoint="sm"
         header={<HeaderMenu />}
+        navbar={<NavbarMain />}
         styles={(theme) => ({
           main: {
             backgroundColor:
