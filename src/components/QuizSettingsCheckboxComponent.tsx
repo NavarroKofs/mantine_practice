@@ -21,27 +21,24 @@ const QuizSettingsCheckboxComponent = ({ setting }: Props) => {
       {setting.options.map((option) => {
         return (
           <Fragment key={`${setting.id}-${option.id}`}>
-            {option.values.map((v) => {
-              return (
-                <Checkbox
-                  key={`${setting.id}-${option.id}-${v.id}`}
-                  value={setting.id}
-                  label={
-                    <Flex align="center" gap={10}>
-                      {v?.icon}
-                      <Flex direction="column">
-                        <Text fz="xs" fw={500}>
-                          {v.title}
-                        </Text>
-                        <Text fz="xs">
-                          {v.description ? t({ id: v.description }) : null}
-                        </Text>
-                      </Flex>
-                    </Flex>
-                  }
-                ></Checkbox>
-              );
-            })}
+            <Checkbox
+              value={`${setting.id}-${option.id}`}
+              label={
+                <Flex align="center" gap={10}>
+                  {option.value?.icon}
+                  <Flex direction="column">
+                    <Text fz="xs" fw={500}>
+                      {option.value.title}
+                    </Text>
+                    <Text fz="xs">
+                      {option.value.description
+                        ? t({ id: option.value.description })
+                        : null}
+                    </Text>
+                  </Flex>
+                </Flex>
+              }
+            ></Checkbox>
           </Fragment>
         );
       })}
