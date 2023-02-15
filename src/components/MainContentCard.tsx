@@ -1,5 +1,6 @@
 import { Box, Container, Flex, Text } from "@mantine/core";
 import React from "react";
+import { useIntl } from "react-intl";
 
 type Props = {
   children: string | JSX.Element | JSX.Element[];
@@ -7,10 +8,11 @@ type Props = {
 };
 
 const MainContentCard = ({ children, title = "" }: Props) => {
+  const { formatMessage: t } = useIntl();
   return (
     <Container>
       <Flex direction="column" gap={5} style={{ borderTop: "1px solid gray" }}>
-        <Text fw={700}>{title}</Text>
+        <Text fw={700}>{title ? t({ id: title }) : null}</Text>
         <Box
           sx={(theme) => ({
             backgroundColor:

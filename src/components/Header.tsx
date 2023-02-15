@@ -3,7 +3,6 @@ import { Burger, createStyles, Header, MediaQuery } from "@mantine/core";
 import { useState } from "react";
 import { headerOptions } from "../headerOptions";
 import CourseCard from "./CourseCard";
-import { IButtonTypes } from "./IButtonTypes";
 import MenuOptions from "./MenuOptions";
 
 const useStyles = createStyles(() => ({
@@ -23,7 +22,14 @@ export function HeaderMenu() {
   return (
     <Header height={{ base: 56 }}>
       <div className={classes.inner}>
-        <CourseCard title="Untitled Quiz" score="No" type="Quiz" />
+        <CourseCard
+          title="quizCard.title"
+          score="quizCard.score"
+          type="quizCard.type"
+        />
+        <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+          <MenuOptions options={headerOptions} />
+        </MediaQuery>
         <MediaQuery largerThan="sm" styles={{ display: "none" }}>
           <Burger
             opened={opened}
@@ -31,9 +37,6 @@ export function HeaderMenu() {
             size="sm"
             mr="xl"
           />
-        </MediaQuery>
-        <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-          <MenuOptions options={headerOptions as IButtonTypes[]} />
         </MediaQuery>
       </div>
     </Header>

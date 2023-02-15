@@ -1,5 +1,6 @@
 import { Checkbox, Flex, Text } from "@mantine/core";
 import React, { Fragment } from "react";
+import { useIntl } from "react-intl";
 import { ISettingsOption } from "./ISettingsOption";
 
 type Props = {
@@ -7,9 +8,12 @@ type Props = {
 };
 
 const QuizSettingsCheckboxComponent = ({ setting }: Props) => {
+  const { formatMessage: t } = useIntl();
   return (
     <Checkbox.Group
-      label={`${setting.id}. ${setting.title}`}
+      label={`${setting.id}. ${
+        setting.title ? t({ id: setting.title }) : null
+      }`}
       orientation={
         setting.orientation === "horizontal" ? "horizontal" : "vertical"
       }
@@ -29,7 +33,9 @@ const QuizSettingsCheckboxComponent = ({ setting }: Props) => {
                         <Text fz="xs" fw={500}>
                           {v.title}
                         </Text>
-                        <Text fz="xs">{v.description}</Text>
+                        <Text fz="xs">
+                          {v.description ? t({ id: v.description }) : null}
+                        </Text>
                       </Flex>
                     </Flex>
                   }

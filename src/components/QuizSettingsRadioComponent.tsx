@@ -1,5 +1,6 @@
 import { Flex, Radio, Text } from "@mantine/core";
 import React, { Fragment } from "react";
+import { useIntl } from "react-intl";
 import { ISettingsOption } from "./ISettingsOption";
 
 type Props = {
@@ -7,9 +8,12 @@ type Props = {
 };
 
 const QuizSettingsRadioComponent = ({ setting }: Props) => {
+  const { formatMessage: t } = useIntl();
   return (
     <Radio.Group
-      label={`${setting.id}. ${setting.title}`}
+      label={`${setting.id}. ${
+        setting.title ? t({ id: setting.title }) : null
+      }`}
       orientation={
         setting.orientation === "horizontal" ? "horizontal" : "vertical"
       }
@@ -28,9 +32,11 @@ const QuizSettingsRadioComponent = ({ setting }: Props) => {
                       {v?.icon}
                       <Flex direction="column">
                         <Text fz="xs" fw={500}>
-                          {v.title}
+                          {v.title ? t({ id: v.title }) : null}
                         </Text>
-                        <Text fz="xs">{v.description}</Text>
+                        <Text fz="xs">
+                          {v.description ? t({ id: v.description }) : null}
+                        </Text>
                       </Flex>
                     </Flex>
                   }

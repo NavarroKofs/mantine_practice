@@ -1,8 +1,10 @@
 import React from "react";
 import { Flex, Text } from "@mantine/core";
 import { ICourseCard } from "./ICourseCard";
+import { useIntl } from "react-intl";
 
 const CourseCard = ({ title, score, type }: ICourseCard) => {
+  const { formatMessage: t } = useIntl();
   return (
     <Flex
       style={{ height: "100%", width: "50%" }}
@@ -23,9 +25,10 @@ const CourseCard = ({ title, score, type }: ICourseCard) => {
         direction="column"
         justify="center"
       >
-        <Text fz="md">{title}</Text>
+        <Text fz="md">{title ? t({ id: title }) : null}</Text>
         <Text fz="md">
-          Score: {score} Type: {type}
+          {t({ id: "Score.label" })}: {score ? t({ id: score }) : null}{" "}
+          {t({ id: "Type.label" })}: {type ? t({ id: type }) : null}
         </Text>
       </Flex>
     </Flex>
