@@ -9,7 +9,7 @@ import { ISettingsOption } from "./components/ISettingsOption";
 export const settings: ISettingsOption[] = [
   {
     id: 1,
-    title: "Quiz Format",
+    title: "QuizFormatKey.title",
     type: "radio",
     orientation: "vertical",
     options: [
@@ -19,8 +19,8 @@ export const settings: ISettingsOption[] = [
           {
             id: 1,
             icon: <IconLayoutList />,
-            title: "One question at a time",
-            description: "Show one question on a page at once",
+            title: "QuizFormatKey.options.one.title",
+            description: "QuizFormatKey.options.one.description",
           },
         ],
       },
@@ -30,8 +30,8 @@ export const settings: ISettingsOption[] = [
           {
             id: 1,
             icon: <IconListDetails />,
-            title: "Classic",
-            description: "Show several questions on a page at once",
+            title: "QuizFormatKey.options.two.title",
+            description: "QuizFormatKey.options.two.description",
           },
         ],
       },
@@ -41,8 +41,8 @@ export const settings: ISettingsOption[] = [
           {
             id: 1,
             icon: <IconMessage />,
-            title: "Conversation",
-            description: "Turn your quiz into a chat conversation",
+            title: "QuizFormatKey.options.three.title",
+            description: "QuizFormatKey.options.three.description",
           },
         ],
       },
@@ -50,7 +50,7 @@ export const settings: ISettingsOption[] = [
   },
   {
     id: 2,
-    title: "Showing answers",
+    title: "QuizShowingAnswers.title",
     type: "radio",
     orientation: "horizontal",
     options: [
@@ -59,9 +59,9 @@ export const settings: ISettingsOption[] = [
         values: [
           {
             id: 1,
-            icon: null,
-            title: null,
-            description: "Show answers inmediatly",
+            icon: undefined,
+            title: undefined,
+            description: "QuizShowingAnswers.options.one.description",
           },
         ],
       },
@@ -70,9 +70,9 @@ export const settings: ISettingsOption[] = [
         values: [
           {
             id: 1,
-            icon: null,
-            title: null,
-            description: "Show answers at the end",
+            icon: undefined,
+            title: undefined,
+            description: "QuizShowingAnswers.options.two.description",
           },
         ],
       },
@@ -81,9 +81,9 @@ export const settings: ISettingsOption[] = [
         values: [
           {
             id: 1,
-            icon: null,
-            title: null,
-            description: "Don't show answers",
+            icon: undefined,
+            title: undefined,
+            description: "QuizShowingAnswers.options.three.description",
           },
         ],
       },
@@ -91,7 +91,7 @@ export const settings: ISettingsOption[] = [
   },
   {
     id: 3,
-    title: "Randomizing",
+    title: "QuizRandomizing.title",
     type: "checkbox",
     orientation: "vertical",
     options: [
@@ -100,9 +100,9 @@ export const settings: ISettingsOption[] = [
         values: [
           {
             id: 1,
-            icon: null,
-            title: null,
-            description: "Randomize question order",
+            icon: undefined,
+            title: undefined,
+            description: "QuizRandomizing.options.one.description",
           },
         ],
       },
@@ -111,9 +111,9 @@ export const settings: ISettingsOption[] = [
         values: [
           {
             id: 1,
-            icon: null,
-            title: null,
-            description: "Randomize answer choice order",
+            icon: undefined,
+            title: undefined,
+            description: "QuizRandomizing.options.two.description",
           },
         ],
       },

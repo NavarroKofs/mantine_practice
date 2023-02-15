@@ -1,5 +1,6 @@
 import { Button } from "@mantine/core";
 import React from "react";
+import { useIntl } from "react-intl";
 import { IButtonTypes } from "./IButtonTypes";
 
 const MenuOption = ({
@@ -9,6 +10,7 @@ const MenuOption = ({
   color = "blue",
   radius,
 }: IButtonTypes) => {
+  const { formatMessage: t } = useIntl();
   return (
     <Button
       id={`${id}`}
@@ -17,7 +19,7 @@ const MenuOption = ({
       radius={radius}
       style={variant === "subtle" ? { border: "gray" } : {}}
     >
-      {text}
+      {text !== "" ? t({ id: text }) : null}
     </Button>
   );
 };

@@ -7,8 +7,8 @@ export interface ISettingsOption {
     id: number;
     values: {
       id: number;
-      icon: JSX.Element | null;
-      title: string | null;
+      icon: JSX.Element | undefined;
+      title: string | undefined;
       description: string;
     }[];
   }[];

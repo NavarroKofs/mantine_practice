@@ -1,32 +1,34 @@
-export const headerOptions = [
+import { IButtonTypes } from "./components/IButtonTypes";
+
+export const headerOptions: IButtonTypes[] = [
   {
     id: 1,
-    text: "Try Lesson",
+    text: "ButtonTypes.one.text",
     variant: "subtle",
     color: "dark",
     radius: "xs",
   },
   {
     id: 2,
-    text: "Print",
+    text: "ButtonTypes.two.text",
     variant: "outline",
     radius: "xs",
   },
   {
     id: 3,
-    text: "Cancel",
+    text: "ButtonTypes.three.text",
     variant: "outline",
     radius: "xs",
   },
   {
     id: 4,
-    text: "Save and draft",
+    text: "ButtonTypes.four.text",
     variant: "filled",
     radius: "xs",
   },
   {
     id: 5,
-    text: "Publish",
+    text: "ButtonTypes.five.text",
     variant: "filled",
     radius: "xs",
   },
