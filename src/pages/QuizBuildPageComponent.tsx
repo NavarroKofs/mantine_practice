@@ -15,7 +15,6 @@ const QuizBuildPageComponent = () => {
   const sessionQuestions = useBuildQuizStoreSelector.use.questions();
 
   useEffect(() => {
-    console.log(sessionQuestions);
     if (sessionQuestions.length !== 0) {
       setQuestions(sessionQuestions);
       setId(sessionQuestions[sessionQuestions.length - 1].id);
@@ -57,7 +56,7 @@ const QuizBuildPageComponent = () => {
       </Flex>
       {isCreating ? (
         <QuizCreateQuestions
-          id={id}
+          id={id + 1}
           onCancelHandler={setIsCreating}
           onAcceptHandler={createQuestion}
         />
