@@ -6,11 +6,7 @@ import { useIntl } from "react-intl";
 const CourseCard = ({ title, score, type }: ICourseCard) => {
   const { formatMessage: t } = useIntl();
   return (
-    <Flex
-      style={{ height: "100%", width: "50%" }}
-      align="center"
-      direction="row"
-    >
+    <Flex style={{ height: "100%" }} align="center" direction="row">
       <div
         style={{
           width: "10%",

@@ -1,7 +1,9 @@
+import { useSortable } from "@dnd-kit/sortable";
 import { Button, createStyles, Flex, TextInput } from "@mantine/core";
-import { IconCheck, IconTrash } from "@tabler/icons-react";
+import { IconCheck, IconTrash, IconDragDrop } from "@tabler/icons-react";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
+import { CSS } from "@dnd-kit/utilities";
 
 type Props = {
   id: string;
@@ -22,26 +24,46 @@ export const InputQuestionComponent = ({
   onDeleteHandler,
 }: Props) => {
   const { formatMessage: t } = useIntl();
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
   const [isSelected, setIsSelected] = useState(false);
   const [text, setText] = useState("");
 
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
+
+  const onClickBtnSelectHandler = () => {
+    setIsSelected((value) => {
+      onChangeHandler(!value, id, text);
+      return !value;
+    });
+  };
+
   return (
-    <Flex direction="row" gap="md">
+    <Flex direction="row" gap="md" style={style} align="center" wrap="wrap">
       <Button
         radius="xl"
         variant={isSelected ? "filled" : "subtle"}
         className={classes.button}
-        onClick={() => {
-          setIsSelected((value) => {
-            onChangeHandler(!value, id, text);
-            return !value;
-          });
-        }}
+        onClick={() => onClickBtnSelectHandler()}
       >
         <IconCheck style={{ position: "absolute", left: 6 }} />
       </Button>
-      <Flex align="center" gap={10}>
+      <div ref={setNodeRef} {...attributes} {...listeners}>
+        <IconDragDrop color={theme.colors.gray[5]} />
+      </div>
+      <Flex align="center" gap={10} wrap="wrap">
         <TextInput
           autoComplete="nope"
           onChange={(e) => {

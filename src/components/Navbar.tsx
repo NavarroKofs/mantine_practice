@@ -12,7 +12,11 @@ type Props = {
 const NavbarMain = ({ onClickLanguageHandler }: Props) => {
   return (
     <Navbar
-      width={{ base: 100 }}
+      width={{
+        sm: 80,
+        lg: 100,
+        base: 60,
+      }}
       p="xs"
       hiddenBreakpoint="sm"
       style={{
