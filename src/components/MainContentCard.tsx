@@ -12,7 +12,9 @@ const MainContentCard = ({ children, title = "" }: Props) => {
   return (
     <Container>
       <Flex direction="column" gap={5} style={{ borderTop: "1px solid gray" }}>
-        <Text fw={700}>{title ? t({ id: title }) : null}</Text>
+        <Text fw={700}>
+          {title ? t({ id: title, defaultMessage: title }) : null}
+        </Text>
         <Box
           sx={(theme) => ({
             backgroundColor:

@@ -8,6 +8,7 @@ import QuizStylePageComponent from "./pages/QuizStylePageComponent";
 import QuizSettingsPageComponent from "./pages/QuizSettingsPageComponent";
 import { IntlProvider } from "react-intl";
 import { englishMessages, spanishMessages } from "./language";
+import QuizBuildPageComponent from "./pages/QuizBuildPageComponent";
 
 function App() {
   const [language, setLanguage] = useState("eng");
@@ -41,7 +42,10 @@ function App() {
             })}
           >
             <Routes>
-              <Route path="quiz/build" element={<div>buildQuiz</div>}></Route>
+              <Route
+                path="quiz/build"
+                element={<QuizBuildPageComponent />}
+              ></Route>
               <Route
                 path="quiz/style"
                 element={<QuizStylePageComponent />}
