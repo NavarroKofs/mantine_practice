@@ -9,6 +9,21 @@ import { FileWithPath } from "@mantine/dropzone";
 import { IChoice } from "./IChoiceQuestion";
 import { IconPlus } from "@tabler/icons-react";
 import { IQuestionForm } from "./IQuestionForm";
+import {
+  DndContext,
+  useSensors,
+  useSensor,
+  KeyboardSensor,
+  MouseSensor,
+  TouchSensor,
+  DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  rectSortingStrategy,
+  SortableContext,
+} from "@dnd-kit/sortable";
+import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 type Props = {
   id: number;
@@ -43,6 +58,13 @@ const QuizCreateQuestions = ({
       },
     },
   });
+  const sensors = useSensors(
+    useSensor(MouseSensor),
+    useSensor(TouchSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
 
   const choiceHandler = (is_checked: boolean, id: string, value: string) => {
     const index = choices.findIndex((choice) => choice.id === id);
@@ -84,6 +106,22 @@ const QuizCreateQuestions = ({
     setChoices(choices.filter((choice) => choice.id !== id));
   };
 
+  const handleDragOver = ({ active, over }: DragEndEvent) => {
+    const overId = over?.id;
+
+    if (!overId) {
+      return;
+    }
+
+    setChoices((choices) =>
+      arrayMove(
+        choices,
+        active.data.current?.sortable.index,
+        over.data.current?.sortable.index
+      )
+    );
+  };
+
   useEffect(() => {
     form.setFieldValue("media", mediaFile);
   }, [mediaFile]);
@@ -104,7 +142,7 @@ const QuizCreateQuestions = ({
           image="https://help.blackboard.com/sites/default/files/bb_assets_embed/19000/original_multiple_answer_student_view.png"
         />
         <Text fw={500}>{t({ id: "QuizBuildPage.section.two.title" })}</Text>
-        <Flex gap={10} align="center">
+        <Flex gap={10} align="center" wrap="wrap">
           <Textarea
             required
             variant="filled"
@@ -118,18 +156,26 @@ const QuizCreateQuestions = ({
         <Text fw={500}>{t({ id: "QuizBuildPage.section.three.title" })}</Text>
 
         <Group>
-          <Flex direction="column" gap={10}>
-            {choices.map((choice) => {
-              return (
-                <InputQuestionComponent
-                  key={choice.id}
-                  onDeleteHandler={deleteAnswer}
-                  onChangeHandler={choiceHandler}
-                  id={choice.id}
-                />
-              );
-            })}
-          </Flex>
+          <DndContext sensors={sensors} onDragEnd={handleDragOver}>
+            <SortableContext
+              id={String(id)}
+              items={choices}
+              strategy={rectSortingStrategy}
+            >
+              <Flex direction="column" gap={10}>
+                {choices.map((choice) => {
+                  return (
+                    <InputQuestionComponent
+                      key={choice.id}
+                      onDeleteHandler={deleteAnswer}
+                      onChangeHandler={choiceHandler}
+                      id={choice.id}
+                    />
+                  );
+                })}
+              </Flex>
+            </SortableContext>
+          </DndContext>
         </Group>
 
         {choices.length < 4 && (

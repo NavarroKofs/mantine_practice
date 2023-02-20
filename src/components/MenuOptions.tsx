@@ -6,7 +6,7 @@ import MenuOption from "./MenuOption";
 const MenuOptions = (props: { options: IButtonTypes[] }) => {
   return (
     <Flex
-      style={{ height: "100%", width: "50%" }}
+      style={{ height: "100%" }}
       align="center"
       direction="row"
       gap="md"

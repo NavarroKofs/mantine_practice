@@ -26,6 +26,7 @@ const QuizBuildPageComponent = () => {
       (choice) => choice.value !== ""
     );
     question.choices = filteredChoices;
+    console.log([...questions, question]);
     setQuestions([...questions, question]);
     setIsCreating(false);
     setId((id) => id + 1);
@@ -40,7 +41,7 @@ const QuizBuildPageComponent = () => {
         gap={10}
         style={isCreating ? { display: "none" } : {}}
       >
-        <Flex gap={10} align="center">
+        <Flex gap={10} align="center" wrap="wrap">
           {questions.map((question) => {
             return (
               <React.Fragment key={question.id}>
